@@ -4,6 +4,8 @@ import DeliveryManDA.DeliveryMan;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
+import sun.tools.jar.resources.jar;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,6 +19,7 @@ import javax.swing.ButtonGroup;
 public class retrieve extends javax.swing.JFrame {
 
     private static List<DeliveryMan> DeliveryManList1 = new ArrayList<>();
+    DeliveryMan DMDA = new DeliveryMan();
 
     /**
      * Creates new form retrieve
@@ -40,7 +43,8 @@ public class retrieve extends javax.swing.JFrame {
         jtfEmail.setEditable(false);
         jtfName.setEditable(false);
         jAddress.setEditable(false);
-        
+        jUpdate.setEnabled(false);
+        jEdit.setEnabled(false);
     }
 
     /**
@@ -72,6 +76,8 @@ public class retrieve extends javax.swing.JFrame {
         jMale = new javax.swing.JRadioButton();
         jFemale = new javax.swing.JRadioButton();
         jClear = new javax.swing.JButton();
+        jUpdate = new javax.swing.JButton();
+        jEdit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -163,6 +169,22 @@ public class retrieve extends javax.swing.JFrame {
             }
         });
 
+        jUpdate.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jUpdate.setText("Update");
+        jUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jUpdateActionPerformed(evt);
+            }
+        });
+
+        jEdit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        jEdit.setText("Edit");
+        jEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jEditActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -174,41 +196,47 @@ public class retrieve extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(148, 148, 148)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel5)
-                                        .addComponent(jLabel3))
-                                    .addGap(19, 19, 19)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jMale)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jFemale))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(jID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jView))
-                                        .addComponent(jtfName, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jtfIc, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(223, 223, 223)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel7)
-                                        .addComponent(jLabel8)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)))
-                                .addComponent(jLabel2))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
-                                .addGap(329, 329, 329)))
-                        .addGap(31, 31, 31)
+                                .addGap(360, 360, 360))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel2)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel5)
+                                            .addComponent(jLabel3))
+                                        .addGap(19, 19, 19)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addComponent(jMale)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(jFemale))
+                                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                                        .addComponent(jID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addComponent(jView))
+                                                    .addComponent(jtfName, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jtfIc, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(223, 223, 223)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel7)
+                                                    .addComponent(jLabel8)
+                                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING)))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(jEdit)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jUpdate)
+                                                .addGap(201, 201, 201)))))
+                                .addGap(31, 31, 31)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtfContact, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(560, 560, 560)
-                        .addComponent(jClear)))
+                            .addComponent(jtfContact, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jClear))))
                 .addContainerGap(249, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -242,12 +270,16 @@ public class retrieve extends javax.swing.JFrame {
                     .addComponent(jtfEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jMale)
                     .addComponent(jFemale))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addComponent(jClear)
-                .addGap(159, 159, 159))
+                .addGap(61, 61, 61)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jClear)
+                    .addComponent(jUpdate)
+                    .addComponent(jEdit))
+                .addContainerGap(161, Short.MAX_VALUE))
         );
 
         jView.getAccessibleContext().setAccessibleName("jbtView");
+        jUpdate.getAccessibleContext().setAccessibleName("jUpdate");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -265,23 +297,18 @@ public class retrieve extends javax.swing.JFrame {
 
     private void jtfNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfNameActionPerformed
         // TODO add your handling code here:
-
-
     }//GEN-LAST:event_jtfNameActionPerformed
 
     private void jtfIcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfIcActionPerformed
         // TODO add your handling code here:
-
     }//GEN-LAST:event_jtfIcActionPerformed
 
     private void jtfContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfContactActionPerformed
         // TODO add your handling code here:
-
     }//GEN-LAST:event_jtfContactActionPerformed
 
     private void jtfEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfEmailActionPerformed
         // TODO add your handling code here:
-
     }//GEN-LAST:event_jtfEmailActionPerformed
 
     private void jMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMaleActionPerformed
@@ -298,6 +325,8 @@ public class retrieve extends javax.swing.JFrame {
         jMale.setSelected(true);
         jView.setEnabled(true);
         jID.setEnabled(true);
+        jUpdate.setEnabled(false);
+        jEdit.setEnabled(false);
     }//GEN-LAST:event_jClearActionPerformed
 
     private void jViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jViewActionPerformed
@@ -307,23 +336,94 @@ public class retrieve extends javax.swing.JFrame {
             if (searchID == DeliveryManList1.get(i).getID()) {
                 jtfName.setText(DeliveryManList1.get(i).getName());
                 jtfIc.setText(DeliveryManList1.get(i).getIC());
-                if(DeliveryManList1.get(i).getGender().equalsIgnoreCase("Male")){
+                if (DeliveryManList1.get(i).getGender().equalsIgnoreCase("Male")) {
                     jMale.setSelected(true);
                     jFemale.setSelected(false);
-                }
-                else{
+                } else {
                     jMale.setSelected(false);
                     jFemale.setSelected(true);
                 }
-            
-            jtfContact.setText(DeliveryManList1.get(i).getContactNo());
-            jAddress.setText(DeliveryManList1.get(i).getAddress());
-            jtfEmail.setText(DeliveryManList1.get(i).getEmail());
+
+                jtfContact.setText(DeliveryManList1.get(i).getContactNo());
+                jAddress.setText(DeliveryManList1.get(i).getAddress());
+                jtfEmail.setText(DeliveryManList1.get(i).getEmail());
             }
         }
-        jView.setEnabled(false);
-        jID.setEnabled(false);
+        jEdit.setEnabled(true);
+
     }//GEN-LAST:event_jViewActionPerformed
+
+    private void jUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jUpdateActionPerformed
+        // TODO add your handling code here:
+        int ID = Integer.parseInt(jID.getSelectedItem().toString());
+        String Name = jtfName.getText();
+        String IC = jtfIc.getText();
+        String Contact = jtfContact.getText();
+        String Address = jAddress.getText();
+        String Email = jtfEmail.getText();
+
+        DMDA.setID(ID);
+        DMDA.setName(Name);
+        DMDA.setIC(IC);
+        DMDA.setContactNo(Contact);
+        DMDA.setAddress(Address);
+        DMDA.setEmail(Email);
+
+        if (Name.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please fill in the name", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (IC.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please fill in the IC", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (Contact.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please fill in the phone number", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (Address.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please fill in the address", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (Email.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please fill in the email", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            boolean flag = false;
+            for (int i = 0; i < DeliveryManList1.size() && !flag; i++) {
+                if (DeliveryManList1.get(i).getID() == ID) {
+                    DeliveryManList1.get(i).setAddress(Address);
+                    DeliveryManList1.get(i).setContactNo(Contact);
+                    DeliveryManList1.get(i).setEmail(Email);
+                    DeliveryManList1.get(i).setIC(IC);
+                    DeliveryManList1.get(i).setName(Name);
+                    flag=true;
+                }
+            }
+            if (flag) {
+                JOptionPane.showMessageDialog(null, "Successful", "Update Completed", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "Update error. Please look for developer.", "Update Failed", JOptionPane.ERROR_MESSAGE);
+            }
+
+            jID.setSelectedItem(1001);
+            jtfIc.setText("");
+            jtfName.setText("");
+            jtfContact.setText("");
+            jAddress.setText("");
+            jtfEmail.setText("");
+            jID.setEditable(true);
+            jtfIc.setEditable(false);
+            jtfName.setEditable(false);
+            jtfContact.setEditable(false);
+            jAddress.setEditable(false);
+            jtfEmail.setEditable(false);
+            jUpdate.setEnabled(false);
+            jView.setEnabled(true);
+        }
+    }//GEN-LAST:event_jUpdateActionPerformed
+
+    private void jEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jEditActionPerformed
+        // TODO add your handling code here:
+        jView.setEnabled(false);
+        jtfName.setEditable(true);
+        jtfIc.setEditable(true);
+        jtfContact.setEditable(true);
+        jAddress.setEditable(true);
+        jtfEmail.setEditable(true);
+        jUpdate.setEnabled(true);
+    }//GEN-LAST:event_jEditActionPerformed
 
     /**
      * @param args the command line arguments
@@ -363,6 +463,7 @@ public class retrieve extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextArea jAddress;
     private javax.swing.JButton jClear;
+    private javax.swing.JButton jEdit;
     private javax.swing.JRadioButton jFemale;
     private javax.swing.JComboBox<String> jID;
     private javax.swing.JLabel jLabel1;
@@ -376,6 +477,7 @@ public class retrieve extends javax.swing.JFrame {
     private javax.swing.JRadioButton jMale;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jUpdate;
     private javax.swing.JButton jView;
     private javax.swing.JTextField jtfContact;
     private javax.swing.JTextField jtfEmail;
