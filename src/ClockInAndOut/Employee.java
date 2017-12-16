@@ -1,25 +1,14 @@
-package ClockInAndOut;
+package clockinandout;
 
 
 import java.io.Serializable;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/**
- *
- * @author End User
- */
 
     import java.io.Serializable;
 import java.util.*;
 import java.util.GregorianCalendar;
 
 public class Employee implements Serializable {
-  private static int nextID= 1000;
 
     
 
@@ -35,9 +24,13 @@ public class Employee implements Serializable {
   
   public Employee(String name) {
     this.name = name;
-    this.EmployeeID = nextID++;
+    this.EmployeeID = EmployeeID;
     this.realTime = new GregorianCalendar();
   }
+
+    Employee() {
+        
+    }
 
     
 
@@ -73,13 +66,6 @@ public class Employee implements Serializable {
       this.EmployeeStatus = EmployeeStatus;
   }
 
-  public static int getNextID() {
-    return nextID;
-  }
-
-  public static void setNextID(int nextID) {
-    Employee.nextID = nextID;
-  }
 
   public int getFinishPosition() {
     return finishPosition;
@@ -95,26 +81,12 @@ public class Employee implements Serializable {
     return hash;
   }
 
-  @Override
-  public boolean equals(Object obj) {
-    if (obj == null) {
-      return false;
-    }
-    if (getClass() != obj.getClass()) {
-      return false;
-    }
-    final Employee other = (Employee) obj;
-    if (this.EmployeeID != other.EmployeeID) {
-      return false;
-    }
-    return true;
-  }
   
   
       
-  @Override
+ 
   public String toString() {
-    return String.format("No. %-10d %-20s \n This Employee are available.\n",+ EmployeeID, name + "\n Check in Time :" +getTime(realTime));
+    return String.format(" Employee Name : %s \n "+ name + "\n Check in Time :" +getTime(realTime));
   }
   
   
